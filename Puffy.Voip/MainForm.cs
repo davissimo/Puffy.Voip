@@ -56,13 +56,32 @@ namespace Puffy.Voip
             try
             {
                 _voipManager.CallTo(destination);
+                ShowNotificationBy(CallResult.Success, destination);
             }
             catch (VoipException ex)
             {
-                //todo: notification at success
-                ShowNotification("Oproep gefaald", ex.Message);
+                ShowNotificationBy(CallResult.Failure, ex.Message);
+            }
+        }
+
+        private void ShowNotificationBy(string callResult, string details)
+        {
+            string caption = null;
+            string text = null;
+
+            switch (callResult)
+            {
+                case CallResult.Success:
+                    caption = "Bellen naar " + details;
+                    text = "Uw telefoon zal zo rinkelen.";
+                    break;
+                case CallResult.Failure:
+                    caption = "Oproep gefaald";
+                    text = details;
+                    break;
             }
 
+            ShowNotification(caption, text);
         }
 
         private void ShowNotification(string caption, string text)
