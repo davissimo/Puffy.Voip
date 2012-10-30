@@ -30,11 +30,22 @@
         {
             this.menuTabControl = new System.Windows.Forms.TabControl();
             this.contactsTabPage = new System.Windows.Forms.TabPage();
-            this.makeCallButton = new System.Windows.Forms.Button();
+            this.callContactButton = new System.Windows.Forms.Button();
             this.searchContactTextBox = new System.Windows.Forms.TextBox();
             this.contactSearchLabel = new System.Windows.Forms.Label();
             this.contactsListBox = new System.Windows.Forms.ListBox();
             this.phoneTabPage = new System.Windows.Forms.TabPage();
+            this.zeroButton = new System.Windows.Forms.Button();
+            this.nineButton = new System.Windows.Forms.Button();
+            this.eightButton = new System.Windows.Forms.Button();
+            this.sevenButton = new System.Windows.Forms.Button();
+            this.sixButton = new System.Windows.Forms.Button();
+            this.fiveButton = new System.Windows.Forms.Button();
+            this.fourButton = new System.Windows.Forms.Button();
+            this.threeButton = new System.Windows.Forms.Button();
+            this.twoButton = new System.Windows.Forms.Button();
+            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
+            this.oneButton = new System.Windows.Forms.Button();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.providerTextBox = new System.Windows.Forms.TextBox();
             this.providerLabel = new System.Windows.Forms.Label();
@@ -46,8 +57,12 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.callNotification = new Microsoft.WindowsCE.Forms.Notification();
+            this.callNumberButton = new System.Windows.Forms.Button();
+            this.backspaceButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.menuTabControl.SuspendLayout();
             this.contactsTabPage.SuspendLayout();
+            this.phoneTabPage.SuspendLayout();
             this.settingsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +80,7 @@
             // 
             // contactsTabPage
             // 
-            this.contactsTabPage.Controls.Add(this.makeCallButton);
+            this.contactsTabPage.Controls.Add(this.callContactButton);
             this.contactsTabPage.Controls.Add(this.searchContactTextBox);
             this.contactsTabPage.Controls.Add(this.contactSearchLabel);
             this.contactsTabPage.Controls.Add(this.contactsListBox);
@@ -74,15 +89,15 @@
             this.contactsTabPage.Size = new System.Drawing.Size(240, 265);
             this.contactsTabPage.Text = "Contacten";
             // 
-            // makeCallButton
+            // callContactButton
             // 
-            this.makeCallButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
-            this.makeCallButton.Location = new System.Drawing.Point(3, 232);
-            this.makeCallButton.Name = "makeCallButton";
-            this.makeCallButton.Size = new System.Drawing.Size(234, 30);
-            this.makeCallButton.TabIndex = 3;
-            this.makeCallButton.Text = "Bellen";
-            this.makeCallButton.Click += new System.EventHandler(this.makeCallButton_Click);
+            this.callContactButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.callContactButton.Location = new System.Drawing.Point(3, 232);
+            this.callContactButton.Name = "callContactButton";
+            this.callContactButton.Size = new System.Drawing.Size(234, 30);
+            this.callContactButton.TabIndex = 3;
+            this.callContactButton.Text = "Bellen";
+            this.callContactButton.Click += new System.EventHandler(this.callContactButton_Click);
             // 
             // searchContactTextBox
             // 
@@ -110,10 +125,142 @@
             // 
             // phoneTabPage
             // 
+            this.phoneTabPage.Controls.Add(this.clearButton);
+            this.phoneTabPage.Controls.Add(this.backspaceButton);
+            this.phoneTabPage.Controls.Add(this.callNumberButton);
+            this.phoneTabPage.Controls.Add(this.zeroButton);
+            this.phoneTabPage.Controls.Add(this.nineButton);
+            this.phoneTabPage.Controls.Add(this.eightButton);
+            this.phoneTabPage.Controls.Add(this.sevenButton);
+            this.phoneTabPage.Controls.Add(this.sixButton);
+            this.phoneTabPage.Controls.Add(this.fiveButton);
+            this.phoneTabPage.Controls.Add(this.fourButton);
+            this.phoneTabPage.Controls.Add(this.threeButton);
+            this.phoneTabPage.Controls.Add(this.twoButton);
+            this.phoneTabPage.Controls.Add(this.phoneNumberTextBox);
+            this.phoneTabPage.Controls.Add(this.oneButton);
             this.phoneTabPage.Location = new System.Drawing.Point(0, 0);
             this.phoneTabPage.Name = "phoneTabPage";
-            this.phoneTabPage.Size = new System.Drawing.Size(232, 263);
+            this.phoneTabPage.Size = new System.Drawing.Size(240, 265);
             this.phoneTabPage.Text = "Telefoon";
+            // 
+            // zeroButton
+            // 
+            this.zeroButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.zeroButton.Location = new System.Drawing.Point(83, 182);
+            this.zeroButton.Name = "zeroButton";
+            this.zeroButton.Size = new System.Drawing.Size(74, 40);
+            this.zeroButton.TabIndex = 13;
+            this.zeroButton.Tag = "0";
+            this.zeroButton.Text = "0";
+            this.zeroButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // nineButton
+            // 
+            this.nineButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.nineButton.Location = new System.Drawing.Point(163, 136);
+            this.nineButton.Name = "nineButton";
+            this.nineButton.Size = new System.Drawing.Size(74, 40);
+            this.nineButton.TabIndex = 12;
+            this.nineButton.Tag = "9";
+            this.nineButton.Text = "9";
+            this.nineButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // eightButton
+            // 
+            this.eightButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.eightButton.Location = new System.Drawing.Point(83, 136);
+            this.eightButton.Name = "eightButton";
+            this.eightButton.Size = new System.Drawing.Size(74, 40);
+            this.eightButton.TabIndex = 11;
+            this.eightButton.Tag = "8";
+            this.eightButton.Text = "8";
+            this.eightButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // sevenButton
+            // 
+            this.sevenButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.sevenButton.Location = new System.Drawing.Point(3, 136);
+            this.sevenButton.Name = "sevenButton";
+            this.sevenButton.Size = new System.Drawing.Size(74, 40);
+            this.sevenButton.TabIndex = 10;
+            this.sevenButton.Tag = "7";
+            this.sevenButton.Text = "7";
+            this.sevenButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // sixButton
+            // 
+            this.sixButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.sixButton.Location = new System.Drawing.Point(163, 90);
+            this.sixButton.Name = "sixButton";
+            this.sixButton.Size = new System.Drawing.Size(74, 40);
+            this.sixButton.TabIndex = 9;
+            this.sixButton.Tag = "6";
+            this.sixButton.Text = "6";
+            this.sixButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // fiveButton
+            // 
+            this.fiveButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.fiveButton.Location = new System.Drawing.Point(83, 90);
+            this.fiveButton.Name = "fiveButton";
+            this.fiveButton.Size = new System.Drawing.Size(74, 40);
+            this.fiveButton.TabIndex = 8;
+            this.fiveButton.Tag = "5";
+            this.fiveButton.Text = "5";
+            this.fiveButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // fourButton
+            // 
+            this.fourButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.fourButton.Location = new System.Drawing.Point(3, 90);
+            this.fourButton.Name = "fourButton";
+            this.fourButton.Size = new System.Drawing.Size(74, 40);
+            this.fourButton.TabIndex = 7;
+            this.fourButton.Tag = "4";
+            this.fourButton.Text = "4";
+            this.fourButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // threeButton
+            // 
+            this.threeButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.threeButton.Location = new System.Drawing.Point(163, 44);
+            this.threeButton.Name = "threeButton";
+            this.threeButton.Size = new System.Drawing.Size(74, 40);
+            this.threeButton.TabIndex = 6;
+            this.threeButton.Tag = "3";
+            this.threeButton.Text = "3";
+            this.threeButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // twoButton
+            // 
+            this.twoButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.twoButton.Location = new System.Drawing.Point(83, 44);
+            this.twoButton.Name = "twoButton";
+            this.twoButton.Size = new System.Drawing.Size(74, 40);
+            this.twoButton.TabIndex = 5;
+            this.twoButton.Tag = "2";
+            this.twoButton.Text = "2";
+            this.twoButton.Click += new System.EventHandler(this.keypadButton_Click);
+            // 
+            // phoneNumberTextBox
+            // 
+            this.phoneNumberTextBox.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(3, 7);
+            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(234, 31);
+            this.phoneNumberTextBox.TabIndex = 4;
+            // 
+            // oneButton
+            // 
+            this.oneButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.oneButton.Location = new System.Drawing.Point(3, 44);
+            this.oneButton.Name = "oneButton";
+            this.oneButton.Size = new System.Drawing.Size(74, 40);
+            this.oneButton.TabIndex = 0;
+            this.oneButton.Tag = "1";
+            this.oneButton.Text = "1";
+            this.oneButton.Click += new System.EventHandler(this.keypadButton_Click);
             // 
             // settingsTabPage
             // 
@@ -207,7 +354,39 @@
             this.callNotification.InitialDuration = 7;
             this.callNotification.Text = "";
             // 
-            // CallForm
+            // callNumberButton
+            // 
+            this.callNumberButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.callNumberButton.Location = new System.Drawing.Point(56, 232);
+            this.callNumberButton.Name = "callNumberButton";
+            this.callNumberButton.Size = new System.Drawing.Size(128, 30);
+            this.callNumberButton.TabIndex = 15;
+            this.callNumberButton.Text = "Bellen";
+            this.callNumberButton.Click += new System.EventHandler(this.callNumberButton_Click);
+            // 
+            // backspaceButton
+            // 
+            this.backspaceButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.backspaceButton.Location = new System.Drawing.Point(190, 232);
+            this.backspaceButton.Name = "backspaceButton";
+            this.backspaceButton.Size = new System.Drawing.Size(47, 30);
+            this.backspaceButton.TabIndex = 16;
+            this.backspaceButton.Tag = "0";
+            this.backspaceButton.Text = "<";
+            this.backspaceButton.Click += new System.EventHandler(this.backspaceButton_Click);
+            // 
+            // clearButton
+            // 
+            this.clearButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.clearButton.Location = new System.Drawing.Point(3, 232);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(47, 30);
+            this.clearButton.TabIndex = 17;
+            this.clearButton.Tag = "0";
+            this.clearButton.Text = "C";
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -215,10 +394,11 @@
             this.ClientSize = new System.Drawing.Size(240, 294);
             this.Controls.Add(this.menuTabControl);
             this.KeyPreview = true;
-            this.Name = "CallForm";
+            this.Name = "MainForm";
             this.Text = "VOIP";
             this.menuTabControl.ResumeLayout(false);
             this.contactsTabPage.ResumeLayout(false);
+            this.phoneTabPage.ResumeLayout(false);
             this.settingsTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -232,7 +412,7 @@
         private System.Windows.Forms.ListBox contactsListBox;
         private System.Windows.Forms.Label contactSearchLabel;
         private System.Windows.Forms.TextBox searchContactTextBox;
-        private System.Windows.Forms.Button makeCallButton;
+        private System.Windows.Forms.Button callContactButton;
         private System.Windows.Forms.TabPage settingsTabPage;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label passwordLabel;
@@ -244,6 +424,20 @@
         private System.Windows.Forms.TextBox providerTextBox;
         private System.Windows.Forms.Label providerLabel;
         private Microsoft.WindowsCE.Forms.Notification callNotification;
+        private System.Windows.Forms.TextBox phoneNumberTextBox;
+        private System.Windows.Forms.Button oneButton;
+        private System.Windows.Forms.Button twoButton;
+        private System.Windows.Forms.Button zeroButton;
+        private System.Windows.Forms.Button nineButton;
+        private System.Windows.Forms.Button eightButton;
+        private System.Windows.Forms.Button sevenButton;
+        private System.Windows.Forms.Button sixButton;
+        private System.Windows.Forms.Button fiveButton;
+        private System.Windows.Forms.Button fourButton;
+        private System.Windows.Forms.Button threeButton;
+        private System.Windows.Forms.Button callNumberButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button backspaceButton;
     }
 }
 

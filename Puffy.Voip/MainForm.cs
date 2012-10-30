@@ -49,10 +49,20 @@ namespace Puffy.Voip
             SetContacts(contacts);
         }
 
-        private void makeCallButton_Click(object sender, EventArgs e)
+        private void callContactButton_Click(object sender, EventArgs e)
         {
             var destination = (string) contactsListBox.SelectedValue;
+            CallToAndNotify(destination);
+        }
 
+        private void callNumberButton_Click(object sender, EventArgs e)
+        {
+            var destination = phoneNumberTextBox.Text;
+            CallToAndNotify(destination);
+        }
+
+        private void CallToAndNotify(string destination)
+        {
             try
             {
                 _voipManager.CallTo(destination);
@@ -99,6 +109,29 @@ namespace Puffy.Voip
             settings.Username = usernameTextBox.Text;
             settings.Password = passwordTextBox.Text;
             settings.CallBackNumber = callBackTextBox.Text;
+        }
+
+        private void keypadButton_Click(object sender, EventArgs e)
+        {
+            var key = (string)((Button)sender).Tag;
+
+            phoneNumberTextBox.Text += key;
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            phoneNumberTextBox.Text = string.Empty;
+        }
+
+        private void backspaceButton_Click(object sender, EventArgs e)
+        {
+            string phoneNumber = phoneNumberTextBox.Text;
+
+            if (string.IsNullOrEmpty(phoneNumber))
+                return;
+
+            int startIndex = phoneNumber.Length - 1;
+            phoneNumberTextBox.Text = phoneNumber.Remove(startIndex, 1);
         }
     }
 }
