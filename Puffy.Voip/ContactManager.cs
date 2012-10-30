@@ -6,19 +6,7 @@ namespace Puffy.Voip
 {
     public class ContactManager
     {
-        public List<ContactNumber> GetFilteredContacts(string filter)
-        {
-            var contacts = this.GetContacts();
-            var filteredContacts = new List<ContactNumber>();
-
-            foreach (var contact in contacts)
-                if (contact.Name.StartsWith(filter, StringComparison.InvariantCultureIgnoreCase))
-                    filteredContacts.Add(contact);
-
-            return filteredContacts;
-        }
-
-        public List<ContactNumber> GetContacts()
+        public List<ContactNumber> GetAllContacts()
         {
             var contacts = new List<ContactNumber>();
 
@@ -30,7 +18,18 @@ namespace Puffy.Voip
             return contacts;
         }
 
-        public List<ContactNumber> GetPhoneContacts()
+        public List<ContactNumber> GetFilteredContacts(string filter)
+        {
+            var contacts = this.GetAllContacts();
+
+            foreach (var contact in contacts)
+                if (!contact.Name.StartsWith(filter, StringComparison.InvariantCultureIgnoreCase))
+                    contacts.Remove(contact);
+
+            return contacts;
+        }
+
+        private List<ContactNumber> GetPhoneContacts()
         {
             var phoneContacts = new List<ContactNumber>();
 
@@ -59,10 +58,12 @@ namespace Puffy.Voip
 
         private ContactNumber GetNumberFrom(Contact phoneContact, string contactType)
         {
-            var name = GetContactNameFrom(phoneContact, contactType);
             string number = GetContactTelephoneFrom(phoneContact, contactType);
 
-            if (String.IsNullOrEmpty(number)) return null;
+            if (String.IsNullOrEmpty(number)) 
+                return null;
+
+            string name = GetContactNameFrom(phoneContact, contactType);
 
             return new ContactNumber()
             {

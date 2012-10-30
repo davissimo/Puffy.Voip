@@ -2,7 +2,7 @@
 
 namespace Puffy.Voip
 {
-    public static class Result
+    public static class CallResult
     {
         public const string Success = "success";
         public const string Failure = "failure";

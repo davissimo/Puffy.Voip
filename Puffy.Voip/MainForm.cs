@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using Microsoft.WindowsMobile.PocketOutlook;
 
 namespace Puffy.Voip
 {
-    public partial class CallForm : Form
+    public partial class MainForm : Form
     {
-        private ContactManager _contactManager;
-        private VoipManager _voipManager;
+        private readonly ContactManager _contactManager;
+        private readonly VoipManager _voipManager;
 
-        public CallForm()
+        public MainForm()
         {
             _contactManager = new ContactManager();
             _voipManager = new VoipManager();
@@ -27,7 +21,7 @@ namespace Puffy.Voip
 
         private void RetrieveContacts()
         {
-            List<ContactNumber> contacts =_contactManager.GetContacts();
+            List<ContactNumber> contacts =_contactManager.GetAllContacts();
             SetContacts(contacts);
         }
 

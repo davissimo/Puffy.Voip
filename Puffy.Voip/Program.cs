@@ -13,7 +13,7 @@ namespace Puffy.Voip
         [MTAThread]
         static void Main()
         {
-            Application.Run(new CallForm());
+            Application.Run(new MainForm());
         }
     }
 }

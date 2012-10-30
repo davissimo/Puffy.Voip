@@ -26,7 +26,7 @@ namespace Puffy.Voip
             var serializer = new XmlSerializer(typeof(CallResponse));
             var response = (CallResponse) serializer.Deserialize(responseStream);
 
-            if (response.Result != Result.Success)
+            if (response.Result != CallResult.Success)
                 throw new VoipException(response.Description);
         }
 

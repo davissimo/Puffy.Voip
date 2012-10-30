@@ -1,6 +1,6 @@
 ﻿namespace Puffy.Voip
 {
-    partial class CallForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.

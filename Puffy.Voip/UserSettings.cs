@@ -5,6 +5,16 @@ namespace Puffy.Voip
 {
     public class UserSettings
     {
+        private static readonly UserSettings _instance = new UserSettings();
+
+        private UserSettings()
+        {
+            _provider = GetSetting(_providerKey);
+            _username = GetSetting(_usernameKey);
+            _password = GetSetting(_passwordKey);
+            _callBackNumber = GetSetting(_callBackNumberKey);
+        }
+
         private string _provider;
         private string _username;
         private string _password;
@@ -15,9 +25,7 @@ namespace Puffy.Voip
         private const string _passwordKey = "Password";
         private const string _callBackNumberKey = "CallBackNumber";
 
-        private const string _keyName = @"HKEY_CURRENT_USER\Software\PuffyVoip\";
-        
-        private static readonly UserSettings _instance = new UserSettings();
+        private const string _rootKey = @"HKEY_CURRENT_USER\Software\PuffyVoip\";
 
         public string Provider
         {
@@ -67,22 +75,14 @@ namespace Puffy.Voip
             }
         }
 
-        private UserSettings()
+        private string GetSetting(string valueKey)
         {
-            _provider = GetSetting(_providerKey);
-            _username = GetSetting(_usernameKey);
-            _password = GetSetting(_passwordKey);
-            _callBackNumber = GetSetting(_callBackNumberKey);
+            return (string) Registry.GetValue(_rootKey, valueKey, null); 
         }
 
-        private string GetSetting(string valueName)
+        private void SetSetting(string valueKey, string value)
         {
-            return (string) Registry.GetValue(_keyName, valueName, null); 
-        }
-
-        private void SetSetting(string valueName, string value)
-        {
-            Registry.SetValue(_keyName, valueName, value);
+            Registry.SetValue(_rootKey, valueKey, value);
         }
     }
 }
