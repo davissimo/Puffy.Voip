@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puffy.Voip", "Puffy.Voip\Puffy.Voip.csproj", "{52F4984C-7F0A-4788-8F15-FC9CC05CC3A9}"
 EndProject
+Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "Puffy.Voip.Installer", "Puffy.Voip.Installer\Puffy.Voip.Installer.vddproj", "{F3DFFA8E-EB53-46C7-A6FC-D3C0697DFAFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{52F4984C-7F0A-4788-8F15-FC9CC05CC3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52F4984C-7F0A-4788-8F15-FC9CC05CC3A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52F4984C-7F0A-4788-8F15-FC9CC05CC3A9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F3DFFA8E-EB53-46C7-A6FC-D3C0697DFAFD}.Debug|Any CPU.ActiveCfg = Debug
+		{F3DFFA8E-EB53-46C7-A6FC-D3C0697DFAFD}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

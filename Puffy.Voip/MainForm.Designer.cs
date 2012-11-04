@@ -142,7 +142,7 @@
             this.phoneTabPage.Controls.Add(this.oneButton);
             this.phoneTabPage.Location = new System.Drawing.Point(0, 0);
             this.phoneTabPage.Name = "phoneTabPage";
-            this.phoneTabPage.Size = new System.Drawing.Size(240, 315);
+            this.phoneTabPage.Size = new System.Drawing.Size(232, 314);
             this.phoneTabPage.Text = "Telefoon";
             // 
             // clearButton
@@ -308,7 +308,7 @@
             this.settingsTabPage.Controls.Add(this.usernameLabel);
             this.settingsTabPage.Location = new System.Drawing.Point(0, 0);
             this.settingsTabPage.Name = "settingsTabPage";
-            this.settingsTabPage.Size = new System.Drawing.Size(240, 319);
+            this.settingsTabPage.Size = new System.Drawing.Size(232, 314);
             this.settingsTabPage.Text = "Instellingen";
             // 
             // providerTextBox
@@ -397,7 +397,7 @@
             this.KeyPreview = true;
             this.Menu = this.mainMenu;
             this.Name = "MainForm";
-            this.Text = "VOIP";
+            this.Text = "PuffyVoip";
             this.menuTabControl.ResumeLayout(false);
             this.contactsTabPage.ResumeLayout(false);
             this.phoneTabPage.ResumeLayout(false);
