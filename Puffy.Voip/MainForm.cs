@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Puffy.Voip
@@ -103,13 +104,14 @@ namespace Puffy.Voip
 
         private void CallToAndNotify(string destination)
         {
-            try
-            {
+            try {
                 _voipManager.CallTo(destination);
                 ShowNotificationBy(CallResult.Success, destination);
             }
-            catch (VoipException ex)
-            {
+            catch (VoipException ex) {
+                ShowNotificationBy(CallResult.Failure, ex.Message);
+            }
+            catch (WebException ex) {
                 ShowNotificationBy(CallResult.Failure, ex.Message);
             }
         }

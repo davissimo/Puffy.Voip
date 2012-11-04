@@ -7,21 +7,21 @@ namespace Puffy.Voip
     public class SimContactProvider
     {
         private const Int64 S_OK = 0x00000000;
-        public const int SIM_CAPSTYPE_ALL = 0x3F; //
-        public const int SIM_PBSTORAGE_SIM = 0x10; //
-        public const int SIM_SMSSTORAGE_SIM = 0x2; //
+        public const int SIM_CAPSTYPE_ALL = 0x3F; // All device cabability types
+        public const int SIM_PBSTORAGE_SIM = 0x10; // General SIM Storage
+        public const int SIM_SMSSTORAGE_SIM = 0x2; // SIM storage location
 
         [StructLayout(LayoutKind.Sequential)]
         public struct SIMPHONEBOOKENTRY
         {
-            public uint cbSize; //
-            public uint dwParams; //
+            public uint cbSize; // Size of the structure in bytes
+            public uint dwParams; // Indicates valid parameter values
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string lpszAddress; //
-            public uint dwAddressType; //
-            public uint dwNumPlan; //
+            public string lpszAddress; // The actual phone number
+            public uint dwAddressType; // A SIM_ADDRTYPE_*constant
+            public uint dwNumPlan; // A SIM_NUMPLAN_*constant
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public string lpszText; //
+            public string lpszText; // Text assocaited with the entry
         }
 
         [DllImport("cellcore.dll")]
@@ -45,6 +45,7 @@ namespace Puffy.Voip
                 int result = SimInitialize(0, 0, 0, ref hSim);
                 if (result != 0)
                     throw new Exception("SIM Contacts");
+
                 uint uiUsed = 0;
                 uint uiTotal = 0;
                 result = SimGetPhonebookStatus(hSim, SIM_PBSTORAGE_SIM, ref uiUsed, ref uiTotal);
