@@ -9,6 +9,9 @@ namespace Puffy.Voip
         private readonly PhoneContactProvider _phoneContactProvider;
         private readonly SimContactProvider _simContactProvider;
 
+        private string _lastFilter;
+        private List<ContactNumber> _cachedContacts;
+
         public ContactManager()
         {
             _phoneContactProvider = new PhoneContactProvider();
@@ -22,21 +25,27 @@ namespace Puffy.Voip
             contacts.AddRange(_phoneContactProvider.GetPhoneContacts());
             contacts.AddRange(_simContactProvider.GetSimContacts());
 
-            return contacts
-                .OrderBy(c => c.Name)
-                .ToList();
+            _cachedContacts = contacts
+                              .OrderBy(c => c.Name)
+                              .ToList();
+
+            return _cachedContacts;
         }
 
         public List<ContactNumber> GetFilteredContacts(string filter)
         {
-            var filteredContacts = new List<ContactNumber>();
-            List<ContactNumber> allContacts = this.GetAllContacts();
+            bool isSubFilter = _lastFilter == null || filter.StartsWith(_lastFilter);
+            _lastFilter = filter;
 
-            foreach (var contact in allContacts)
-                if (contact.Name.StartsWith(filter, StringComparison.InvariantCultureIgnoreCase))
-                    filteredContacts.Add(contact);
+            List<ContactNumber> allContacts = isSubFilter
+                                              ? _cachedContacts
+                                              : this.GetAllContacts();
 
-            return filteredContacts;
+            _cachedContacts = allContacts
+                .Where(contact => contact.Name.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            return _cachedContacts;
         }
     }
 }
