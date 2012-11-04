@@ -34,18 +34,23 @@ namespace Puffy.Voip
 
         public List<ContactNumber> GetFilteredContacts(string filter)
         {
-            bool isSubFilter = _lastFilter == null || filter.StartsWith(_lastFilter);
+            List<ContactNumber> allContacts = GetContactsToFilter(filter);
             _lastFilter = filter;
 
-            List<ContactNumber> allContacts = isSubFilter
-                                              ? _cachedContacts
-                                              : this.GetAllContacts();
-
             _cachedContacts = allContacts
-                .Where(contact => contact.Name.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
+                .Where(c => c.Name.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             return _cachedContacts;
+        }
+
+        private List<ContactNumber> GetContactsToFilter(string filter)
+        {
+            bool isSubFilter = _lastFilter == null || filter.StartsWith(_lastFilter);
+
+            return isSubFilter
+                   ? _cachedContacts
+                   : this.GetAllContacts();
         }
     }
 }
