@@ -35,6 +35,9 @@
             this.contactSearchLabel = new System.Windows.Forms.Label();
             this.contactsListBox = new System.Windows.Forms.ListBox();
             this.phoneTabPage = new System.Windows.Forms.TabPage();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.backspaceButton = new System.Windows.Forms.Button();
+            this.callNumberButton = new System.Windows.Forms.Button();
             this.zeroButton = new System.Windows.Forms.Button();
             this.nineButton = new System.Windows.Forms.Button();
             this.eightButton = new System.Windows.Forms.Button();
@@ -57,9 +60,7 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.callNotification = new Microsoft.WindowsCE.Forms.Notification();
-            this.callNumberButton = new System.Windows.Forms.Button();
-            this.backspaceButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
+            this.mainMenu = new System.Windows.Forms.MainMenu();
             this.menuTabControl.SuspendLayout();
             this.contactsTabPage.SuspendLayout();
             this.phoneTabPage.SuspendLayout();
@@ -71,11 +72,11 @@
             this.menuTabControl.Controls.Add(this.contactsTabPage);
             this.menuTabControl.Controls.Add(this.phoneTabPage);
             this.menuTabControl.Controls.Add(this.settingsTabPage);
-            this.menuTabControl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.menuTabControl.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular);
             this.menuTabControl.Location = new System.Drawing.Point(0, 0);
             this.menuTabControl.Name = "menuTabControl";
             this.menuTabControl.SelectedIndex = 0;
-            this.menuTabControl.Size = new System.Drawing.Size(240, 294);
+            this.menuTabControl.Size = new System.Drawing.Size(240, 348);
             this.menuTabControl.TabIndex = 0;
             // 
             // contactsTabPage
@@ -86,13 +87,13 @@
             this.contactsTabPage.Controls.Add(this.contactsListBox);
             this.contactsTabPage.Location = new System.Drawing.Point(0, 0);
             this.contactsTabPage.Name = "contactsTabPage";
-            this.contactsTabPage.Size = new System.Drawing.Size(240, 265);
+            this.contactsTabPage.Size = new System.Drawing.Size(240, 317);
             this.contactsTabPage.Text = "Contacten";
             // 
             // callContactButton
             // 
             this.callContactButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
-            this.callContactButton.Location = new System.Drawing.Point(3, 232);
+            this.callContactButton.Location = new System.Drawing.Point(3, 286);
             this.callContactButton.Name = "callContactButton";
             this.callContactButton.Size = new System.Drawing.Size(234, 30);
             this.callContactButton.TabIndex = 3;
@@ -120,7 +121,7 @@
             this.contactsListBox.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
             this.contactsListBox.Location = new System.Drawing.Point(3, 64);
             this.contactsListBox.Name = "contactsListBox";
-            this.contactsListBox.Size = new System.Drawing.Size(234, 146);
+            this.contactsListBox.Size = new System.Drawing.Size(234, 194);
             this.contactsListBox.TabIndex = 0;
             // 
             // phoneTabPage
@@ -141,8 +142,40 @@
             this.phoneTabPage.Controls.Add(this.oneButton);
             this.phoneTabPage.Location = new System.Drawing.Point(0, 0);
             this.phoneTabPage.Name = "phoneTabPage";
-            this.phoneTabPage.Size = new System.Drawing.Size(240, 265);
+            this.phoneTabPage.Size = new System.Drawing.Size(240, 315);
             this.phoneTabPage.Text = "Telefoon";
+            // 
+            // clearButton
+            // 
+            this.clearButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.clearButton.Location = new System.Drawing.Point(3, 286);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(47, 30);
+            this.clearButton.TabIndex = 17;
+            this.clearButton.Tag = "0";
+            this.clearButton.Text = "C";
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // backspaceButton
+            // 
+            this.backspaceButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.backspaceButton.Location = new System.Drawing.Point(190, 286);
+            this.backspaceButton.Name = "backspaceButton";
+            this.backspaceButton.Size = new System.Drawing.Size(47, 30);
+            this.backspaceButton.TabIndex = 16;
+            this.backspaceButton.Tag = "0";
+            this.backspaceButton.Text = "<";
+            this.backspaceButton.Click += new System.EventHandler(this.backspaceButton_Click);
+            // 
+            // callNumberButton
+            // 
+            this.callNumberButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.callNumberButton.Location = new System.Drawing.Point(56, 286);
+            this.callNumberButton.Name = "callNumberButton";
+            this.callNumberButton.Size = new System.Drawing.Size(128, 30);
+            this.callNumberButton.TabIndex = 15;
+            this.callNumberButton.Text = "Bellen";
+            this.callNumberButton.Click += new System.EventHandler(this.callNumberButton_Click);
             // 
             // zeroButton
             // 
@@ -275,7 +308,7 @@
             this.settingsTabPage.Controls.Add(this.usernameLabel);
             this.settingsTabPage.Location = new System.Drawing.Point(0, 0);
             this.settingsTabPage.Name = "settingsTabPage";
-            this.settingsTabPage.Size = new System.Drawing.Size(232, 263);
+            this.settingsTabPage.Size = new System.Drawing.Size(240, 319);
             this.settingsTabPage.Text = "Instellingen";
             // 
             // providerTextBox
@@ -296,7 +329,7 @@
             // saveSettingsButton
             // 
             this.saveSettingsButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
-            this.saveSettingsButton.Location = new System.Drawing.Point(3, 232);
+            this.saveSettingsButton.Location = new System.Drawing.Point(3, 286);
             this.saveSettingsButton.Name = "saveSettingsButton";
             this.saveSettingsButton.Size = new System.Drawing.Size(234, 30);
             this.saveSettingsButton.TabIndex = 15;
@@ -354,46 +387,15 @@
             this.callNotification.InitialDuration = 7;
             this.callNotification.Text = "";
             // 
-            // callNumberButton
-            // 
-            this.callNumberButton.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
-            this.callNumberButton.Location = new System.Drawing.Point(56, 232);
-            this.callNumberButton.Name = "callNumberButton";
-            this.callNumberButton.Size = new System.Drawing.Size(128, 30);
-            this.callNumberButton.TabIndex = 15;
-            this.callNumberButton.Text = "Bellen";
-            this.callNumberButton.Click += new System.EventHandler(this.callNumberButton_Click);
-            // 
-            // backspaceButton
-            // 
-            this.backspaceButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.backspaceButton.Location = new System.Drawing.Point(190, 232);
-            this.backspaceButton.Name = "backspaceButton";
-            this.backspaceButton.Size = new System.Drawing.Size(47, 30);
-            this.backspaceButton.TabIndex = 16;
-            this.backspaceButton.Tag = "0";
-            this.backspaceButton.Text = "<";
-            this.backspaceButton.Click += new System.EventHandler(this.backspaceButton_Click);
-            // 
-            // clearButton
-            // 
-            this.clearButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.clearButton.Location = new System.Drawing.Point(3, 232);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(47, 30);
-            this.clearButton.TabIndex = 17;
-            this.clearButton.Tag = "0";
-            this.clearButton.Text = "C";
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 294);
+            this.ClientSize = new System.Drawing.Size(240, 348);
             this.Controls.Add(this.menuTabControl);
             this.KeyPreview = true;
+            this.Menu = this.mainMenu;
             this.Name = "MainForm";
             this.Text = "VOIP";
             this.menuTabControl.ResumeLayout(false);
@@ -438,6 +440,7 @@
         private System.Windows.Forms.Button callNumberButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button backspaceButton;
+        private System.Windows.Forms.MainMenu mainMenu;
     }
 }
 

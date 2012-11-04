@@ -19,20 +19,12 @@ namespace Puffy.Voip
             RetrieveUserSettings();
         }
 
+        //todo: split up to classes
+#region contacts
         private void RetrieveContacts()
         {
-            List<ContactNumber> contacts =_contactManager.GetAllContacts();
+            List<ContactNumber> contacts = _contactManager.GetAllContacts();
             SetContacts(contacts);
-        }
-
-        private void RetrieveUserSettings()
-        {
-            var settings = UserSettings.Instance;
-
-            providerTextBox.Text = settings.Provider;
-            usernameTextBox.Text = settings.Username;
-            passwordTextBox.Text = settings.Password;
-            callBackTextBox.Text = settings.CallBackNumber;
         }
 
         private void SetContacts(IEnumerable<ContactNumber> contacts)
@@ -51,8 +43,33 @@ namespace Puffy.Voip
 
         private void callContactButton_Click(object sender, EventArgs e)
         {
-            var destination = (string) contactsListBox.SelectedValue;
+            var destination = (string)contactsListBox.SelectedValue;
             CallToAndNotify(destination);
+        }
+#endregion
+
+#region phone
+        private void keypadButton_Click(object sender, EventArgs e)
+        {
+            var key = (string)((Button)sender).Tag;
+
+            phoneNumberTextBox.Text += key;
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            phoneNumberTextBox.Text = string.Empty;
+        }
+
+        private void backspaceButton_Click(object sender, EventArgs e)
+        {
+            string phoneNumber = phoneNumberTextBox.Text;
+
+            if (string.IsNullOrEmpty(phoneNumber))
+                return;
+
+            int startIndex = phoneNumber.Length - 1;
+            phoneNumberTextBox.Text = phoneNumber.Remove(startIndex, 1);
         }
 
         private void callNumberButton_Click(object sender, EventArgs e)
@@ -60,6 +77,29 @@ namespace Puffy.Voip
             var destination = phoneNumberTextBox.Text;
             CallToAndNotify(destination);
         }
+#endregion
+
+#region settings
+        private void RetrieveUserSettings()
+        {
+            var settings = UserSettings.Instance;
+
+            providerTextBox.Text = settings.Provider;
+            usernameTextBox.Text = settings.Username;
+            passwordTextBox.Text = settings.Password;
+            callBackTextBox.Text = settings.CallBackNumber;
+        }
+
+        private void saveSettingsButton_Click(object sender, EventArgs e)
+        {
+            var settings = UserSettings.Instance;
+
+            settings.Provider = providerTextBox.Text;
+            settings.Username = usernameTextBox.Text;
+            settings.Password = passwordTextBox.Text;
+            settings.CallBackNumber = callBackTextBox.Text;
+        }
+#endregion
 
         private void CallToAndNotify(string destination)
         {
@@ -99,39 +139,6 @@ namespace Puffy.Voip
             callNotification.Caption = caption;
             callNotification.Text = text;
             callNotification.Visible = true;
-        }
-
-        private void saveSettingsButton_Click(object sender, EventArgs e)
-        {
-            var settings = UserSettings.Instance;
-
-            settings.Provider = providerTextBox.Text;
-            settings.Username = usernameTextBox.Text;
-            settings.Password = passwordTextBox.Text;
-            settings.CallBackNumber = callBackTextBox.Text;
-        }
-
-        private void keypadButton_Click(object sender, EventArgs e)
-        {
-            var key = (string)((Button)sender).Tag;
-
-            phoneNumberTextBox.Text += key;
-        }
-
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            phoneNumberTextBox.Text = string.Empty;
-        }
-
-        private void backspaceButton_Click(object sender, EventArgs e)
-        {
-            string phoneNumber = phoneNumberTextBox.Text;
-
-            if (string.IsNullOrEmpty(phoneNumber))
-                return;
-
-            int startIndex = phoneNumber.Length - 1;
-            phoneNumberTextBox.Text = phoneNumber.Remove(startIndex, 1);
         }
     }
 }

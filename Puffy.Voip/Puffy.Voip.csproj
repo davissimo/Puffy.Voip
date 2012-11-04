@@ -69,6 +69,7 @@
     <Compile Include="ContactNumber.cs" />
     <Compile Include="ContactType.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="PhoneContactProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -84,6 +85,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="CallResult.cs" />
+    <Compile Include="SimContactProvider.cs">
+    </Compile>
     <Compile Include="UserSettings.cs" />
     <Compile Include="VoipException.cs" />
     <Compile Include="VoipManager.cs" />
